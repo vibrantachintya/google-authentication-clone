@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.youtube.com/s/desktop/0bcbb234/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/0bcbb234/img/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/0bcbb234/img/favicon_48x48.png" sizes="48x48">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/0bcbb234/img/favicon_96x96.png" sizes="96x96">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/0bcbb234/img/favicon_144x144.png" sizes="144x144">
+    <title>Signin - Youtube</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <style>
+        #signup {
+            display: flex;
+            width: 50%;
+            margin: 100px auto 0px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        #signup > div:first-child {
+            width: 60%;
+        }
+
+        #signup > div:first-child > div {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0px;
+        }
+
+        #signup > div:first-child > div > input, textarea {
+            padding: 10px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            resize: none;
+            font-family: Roboto;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #signup > div:first-child > div:nth-child(3) > input, #signup > div:first-child > div:nth-child(5) > input, textarea {
+            width: 100%;
+        }
+
+        #signup > div:first-child > div:last-child > p {
+            color: #4588f2;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #signup > div:first-child > div:last-child > button {
+            background: #4588f2;
+            color: white;
+            border: none;
+            height: 30px;
+            padding: 0px 20px;
+            margin-top: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #signup > div:last-child {
+            width: 60%;
+        }
+
+        #signup > div:last-child > p {
+            text-align: center;
+            width: 60%;
+            margin: 0px auto;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            font-weight: normal;
+        }
+
+        #login {
+            text-align: center;
+            width: 25%;
+            margin: 100px auto 0px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        #login > div > input {
+            padding: 10px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            outline: none;
+            width: 90%;
+            margin-bottom: 10px;
+        }
+
+        #login > div {
+            display: flex;
+            margin-top: 10px;
+            justify-content: space-between;
+        }
+
+        #login > div:last-child > p {
+            color: #4588f2;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #login > div:last-child > button {
+            background: #4588f2;
+            color: white;
+            border: none;
+            height: 30px;
+            padding: 0px 20px;
+            margin-top: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="signup">
+            <div>
+                <img src="./images/logo.png" width="80px" />
+                <h2>Create your Google Account</h2>
+                <p>to continue to Youtube</p>
+                <div>
+                    <input type="text" id="first-name" placeholder="First Name" />
+                    <input type="text" id="last-name" placeholder="First Name" />
+                </div>
+                <div>
+                    <input type="text" id="user-name" placeholder="Username" />
+                </div>
+                <div>
+                    <input type="password" id="password" placeholder="Password" />
+                    <input type="password" id="confirm-password" placeholder="Confirm password" />
+                </div>
+                <div>
+                    <input type="text" id="number" placeholder="Phone Number" />
+                </div>
+                <div>
+                    <textarea id="description" placeholder="Description" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <p id="sign-in">Sign in instead</p>
+                    <button id="create-button">Create</button>
+                </div>
+            </div>
+            <div>
+                <img src="./images/account.svg" />
+                <p>One account. All of Google working for you.</p>
+            </div>
+
+        </div>
+        <div id="login">
+            <img src="./images/logo.png" width="80px" />
+            <h2>Sign in</h2>
+            <p>to continue to Youtube</p>
+            <div>
+                <input type="text" placeholder="Username" id="login-username" />
+            </div>
+            <div>
+                <input type="password" placeholder="Password" id="login-password" /></div>
+            <div>
+                <p id="create-account">Create Account</p>
+                <button id="login-button">Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    if(localStorage.getItem("token"))
+        window.location.href = "./profile.html";
+
+    document.querySelector("#signup").style.display = "none";
+    document.querySelector("#sign-in").addEventListener("click", function() {
+        document.querySelector("#login").style.display = "block";
+        document.querySelector("#signup").style.display = "none";
+    });
+    document.querySelector("#create-account").addEventListener("click", function() {
+        document.querySelector("#login").style.display = "none";
+        document.querySelector("#signup").style.display = "flex";
+    });
+
+    document.querySelector("#create-button").addEventListener("click", createAccount);
+    document.querySelector("#login-button").addEventListener("click", loginUser);
+
+    async function createAccount() {
+        try {
+            let registerData = {
+                name : document.querySelector("#first-name").value + " " + document.querySelector("#last-name").value,
+                email : document.querySelector("#user-name").value + "@gmail.com",
+                username : document.querySelector("#user-name").value,
+                password : document.querySelector("#password").value,
+                mobile : document.querySelector("#number").value,
+                description : document.querySelector("#description").value
+            };
+            registerData = JSON.stringify(registerData);
+            let apiUrl = `https://masai-api-mocker.herokuapp.com/auth/register`;
+            let response = await fetch(apiUrl, {
+                method: 'POST',
+                body: registerData,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            let data = await response.json();
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+    async function loginUser() {
+        try {
+            let user = {
+                password: document.querySelector("#login-password").value,
+                username: document.querySelector("#login-username").value
+            };
+            user = JSON.stringify(user);
+            let apiUrl = `https://masai-api-mocker.herokuapp.com/auth/login`;
+            let response = await fetch(apiUrl, {
+                method: "POST",
+                body: user,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            let data = await response.json();
+            if(!data.error) {
+                localStorage.setItem("user-name", document.querySelector("#login-username").value);
+                localStorage.setItem("token", data.token);
+                window.location.href = "./profile.html";
+            } else {
+                alert("Invalid Username/Password");
+            }
+        } catch(err) {
+            console.log(err);
+        }
+    } 
+
+
+
+</script>
+</html>
